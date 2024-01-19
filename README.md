@@ -36,3 +36,6 @@ php artisan test
 
 ## ERD
 https://drive.google.com/file/d/1ObkWXfRJcWqKtiGJENL39wOcQ6sc4Ud6/view?usp=sharing
+
+## API Documentation Postman
+https://drive.google.com/file/d/19zOxfA88dKi4K_F7kQMZ0YCsQ0lyISxJ/view?usp=sharing
