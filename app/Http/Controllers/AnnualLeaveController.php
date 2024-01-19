@@ -11,12 +11,14 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class AnnualLeaveController extends Controller
 {
+    // GET all Leave Tvpe
     public function getLeaveType(){
         $leaveType = LeaveType::all();
 
         return response()->json($leaveType);
     }
 
+    // POST Annual Leave
     public function postAnnualLeave(Request $request){
         $validator = Validator::make($request->all(), [
             'leave_type_id' => 'required',
@@ -44,9 +46,10 @@ class AnnualLeaveController extends Controller
 
     }
 
+    // GET All Annual Leave Data
     public function getAnnualLeave(){
         $data = QueryBuilder::for(AnnualLeave::class)
-        ->allowedFilters(['employee.full_name', 'leavetype.name', 'id', 'start_date', 'end_date', 'status'])
+        ->allowedFilters(['employee.full_name', 'leavetype.name', 'id', 'start_date', 'end_date', 'status']) // // Kolom yang diizinkan untuk difilter
         ->allowedSorts(['start_date', 'end_date']) // Kolom yang diizinkan untuk diurutkan
         ->defaultSort('-created_at') // Pengurutan default
         ->with(['employee', 'leave_type'])->paginate(10);
@@ -54,6 +57,7 @@ class AnnualLeaveController extends Controller
         return response()->json($data);
     }
 
+    // GET Annual Leave by ID
     public function getAnnualLeaveID($id){
         $data = AnnualLeave::with(['employee', 'leave_type'])->where('id', $id)->first();
 

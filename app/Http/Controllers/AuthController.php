@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    // Register User
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -45,6 +46,7 @@ class AuthController extends Controller
         ]);
     }
 
+    // Login User
     public function login(Request $request)
     {
         if (! Auth::attempt($request->only('email', 'password'))) {
@@ -64,6 +66,7 @@ class AuthController extends Controller
         ]);
     }
 
+    // Logout
     public function logout()
     {
         Auth::user()->tokens()->delete();
